@@ -50,7 +50,7 @@ function App() {
           <Route path="/history" element={<History/>}>
             <Route index element={<HistoryCustomers history={history} toggle={toggle} selected={selected} setSelected={setSelected}/>} />
             <Route path="customers" element={<HistoryCustomers history={history} toggle={toggle} selected={selected} setSelected={setSelected} />}/>
-            <Route path="trade" element={<HistoryTrade history={history}/>} />
+            <Route path="trade" element={<HistoryTrade history={history} forceUpdate={forceUpdate} />} />
           </Route>
           <Route/>
           
