@@ -73,7 +73,7 @@ export default function HistoryTrade({history, forceUpdate}) {
       <div className='show'>
         <p className="showCount">{date === '' && date2 === '' ? showMonth : showMain}<span> so'm</span></p>
         <p className='fromToDate' >
-          <span>{date === '' ? new Date(monthstart).getDate() : startDay} {months[(date === '' ? new Date(monthstart).getMonth()  : startMonth)]} - {date2 === '' ? new Date(time).getDate() : endDay} {months[(date2 === '' ? new Date(time).getMonth() : endMonth)]}</span>
+          <span>{date === '' ? new Date(monthstart).getDate() : startDay} {months[(date === '' ? new Date(monthstart).getMonth()  : startMonth)]} - {date2 === '' ? new Date(time).getDate() : endDay - 1} {months[(date2 === '' ? new Date(time).getMonth() : endMonth)]}</span>
         </p>
       </div>
         <form action="">
