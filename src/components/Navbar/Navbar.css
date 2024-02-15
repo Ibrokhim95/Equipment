@@ -1,0 +1,42 @@
+.navbar {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+
+   padding-block: 12px;
+   background: #fff;
+   z-index: 1000;
+   box-shadow: -1px 1px 3px 1px #222;
+   min-width: 270px;
+}
+
+.navbar .card {
+   display: flex;
+   justify-content: space-around;
+   box-shadow: none;
+   width: 90%;
+   max-width: 90%;
+   margin-left: auto;
+}
+
+.navbar a {
+   font-size: 10px;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   width: 70px;
+   padding: 3px;
+   border-radius: 5px;
+   color: rgb(49, 147, 169);
+   box-shadow: -0.4px 0.5px 2px 1.5px rgb(65, 148, 175);
+}
+
+.navbar .active {
+   color: rgb(23, 159, 190);
+   box-shadow: .5px .5px 1px 1px rgb(138, 193, 212);
+}
+
+.navbar a span {
+   font-size: 8px;
+}

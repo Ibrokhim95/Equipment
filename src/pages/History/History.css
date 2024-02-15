@@ -1,0 +1,154 @@
+.history .card {
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.history .links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.history a {
+  color: #fff;
+  background: #2ecc71;
+  box-shadow: 0.5px 0.5px 3px 1px #239f56;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.history .active {
+  background: #239f56;
+  color: rgb(211, 209, 209);
+  box-shadow: none;
+}
+
+.customersHistory h1, .historyTrade h1 {
+  font-size: 18px;
+  text-align: center;
+}
+
+.customersHistory li {
+  font-weight: 300;
+  list-style: none;
+  padding: 3px 0;
+  margin-bottom: 10px;
+}
+
+.customersHistory li .customerTitle {
+  background: rgb(199, 232, 30);
+  padding: 3px;
+}
+
+.customersHistory form {
+  margin-block: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.customersHistory form .search {
+  display: flex;
+  align-items: center;
+  width: 60%;
+}
+
+.customersHistory form .search button {
+  padding: 4px 10px;
+  font-size: 10px;
+  border-radius: 0;
+  background: rgb(42, 167, 239);
+}
+
+.customersHistory form input {
+  width: 90%;
+  border: 1px solid rgba(51, 51, 51, 0.483);
+}
+
+.customersHistory li .customerTitle {
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.customersHistory li .customerTitle :last-child {
+  font-size: 12px;
+}
+
+.historyTrade {
+  text-align: center;
+}
+
+.historyTrade form {
+  border-bottom: 1px solid #222;
+  margin-bottom: 20px;
+}
+
+.historyTrade .show {
+  background: rgb(228, 227, 227);
+  color: rgb(60, 59, 59);
+  margin-block: 10px;
+  border-radius: 5px;
+}
+
+.historyTrade .showCount {
+  margin-top: 15px;
+  padding-top: 10px;
+  font-size: 32px;
+}
+
+.historyTrade .showCount span {
+  font-size: 20px;
+}
+
+.historyTrade .fromToDate {
+  background: rgb(123, 122, 122);
+  color: #fff;
+  width: max-content;
+  margin-inline: auto;
+  margin-top: 10px;
+  padding: 2px 10px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+.historyTrade form {
+  padding-block: 5px;
+}
+
+.historyTrade form .inputs{
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+}
+
+.historyTrade form .btn {
+  border: none;
+  margin-inline: auto;
+  margin-top: 10px;
+}
+
+.historyTrade form .btn button {
+  padding: 3px 12px;
+  border-radius: 6px;
+}
+
+.historyTrade .showOther {
+  padding: 10px 10px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  background: rgb(237, 235, 235);
+  color: #555;
+  border-bottom: 1px solid #222;
+  font-size: 18px;
+}
+
+.historyTrade .showOther span {
+  color: #111;
+  font-size: 22px;
+}
+
+.historyTrade .showOther span span {
+  font-size: 17px;
+}

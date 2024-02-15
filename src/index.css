@@ -1,0 +1,546 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0, auto;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+  margin: 30px auto;
+}
+
+.addCustomer{
+  background: rgba(51, 51, 51, 0.905);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addCustomer input {
+ padding-block: 7px;
+ font-size: 14px;
+}
+
+.addCustomer button {
+  width: max-content;
+}
+
+.customer {
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+}
+
+.customer h3 {
+  background: rgb(91, 204, 252);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 2px solid gray;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+  text-transform: capitalize;
+}
+
+.customer .detailed a {
+ width: max-content;
+ display: block;
+ margin: 5px auto;
+ padding: 3px 10px;
+ box-shadow: .5px .5px 2px 3px #12b054;
+ border-radius: 10%;
+ background: rgb(28, 218, 28);
+ color: rgb(255, 255, 255);
+ font-size: 13px;
+ letter-spacing: 1px;
+}
+
+.customer .showDebt .debtInfo{
+ border: 1px solid #555;
+ width: max-content;
+ margin-left: auto;
+ padding: 10px 5px 3px;
+ font-size: 16px;
+ color: #555;
+ display: flex;
+ align-items: center;
+ gap: 5px;
+}
+
+.customer .showDebt .debt {
+ color: #000;
+}
+
+.customer .showDebt .decDebt{
+  border-top: 1px solid #555;
+  padding-block: 5px;
+  padding-right: 10px;
+}
+
+.customer .showDebt .trader {
+  margin-left: auto;
+  display: block;
+  width: 53.5%;
+  margin-bottom: 3px;
+}
+
+.customer .showDebt .decInp {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
+
+.customer .showDebt .decInp input{
+  width: 30%;
+}
+
+.customer .showDebt .decDebt button {
+  padding: 2px 10px;
+  border-radius: 5px;
+}
+
+span {
+  cursor: pointer;
+}
+
+.hidden {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.card{
+  min-width: 270px;
+  width: 90%;
+  max-width: 90%;
+  margin-inline: auto;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.card h5{
+  background: rgba(158, 135, 35, 0.822);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.card .selectProduct {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 20px 15px;
+  box-shadow: .01px 4px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.card .btn {
+  /* width: 50px; */
+  border: 1px solid #333;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  padding: 3px 10px;
+  max-width: 92px;
+}
+
+.card .btn:hover, .productBtn {
+  cursor: pointer;
+  background: rgb(212, 210, 210);
+}
+
+.card .btn:active {
+  scale: .9;
+}
+
+.card .btn img{
+  width: 30px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+
+.customerBtns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: .01px 4px 2px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.customerBtns a{
+  padding: 7px 10px;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 10px;
+}
+
+.addTransactionBtn{
+  background: #2ecc71;
+}
+
+.customerHistoryBtn {
+ background: rgb(179, 188, 97);   
+}
+
+.returnTransactionBtn {
+  background: rgb(227, 77, 77);
+}
+
+.addList {
+  padding: 20px 0;
+  box-shadow: .01px 4px 2px 1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+input{
+  border: 1px solid #dedede;
+  border-radius: 2px;
+  padding: 3px;
+  font-size: 12px;
+  text-align: right;
+}
+
+.priceInput {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.priceInput input {
+  width: 70px;
+  margin-block: 0;
+}
+
+.countInput, .additionAmount{
+  width: 45px;
+}
+
+.inline{
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+button {
+  cursor: pointer;
+  background: #2ecc71;
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  display: block;
+  padding: 10px 14px;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.list li {
+  color: #333;
+  position: relative;
+  padding: 7px;
+  margin-bottom: 10px;
+  box-shadow: .01px 1px 2px 1px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.list li .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.title p{
+  font-style: 14px;
+}
+
+.list li .listInput{
+  overflow: hidden;
+}
+
+.list li button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+}
+
+.list li .listInput form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-inline: 20px;
+  margin-block: 25px;
+}
+
+.list li form label {
+ font-size: 12px;
+}
+
+ .additions p {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 15px;
+ }
+
+.additions form{
+ display: flex;
+ justify-content: space-evenly;
+ gap: 10px;
+ margin-block: 10px;
+ padding-inline: 20px;
+}
+
+.addition{
+ width: 130px;
+}
+
+.showCalculate{
+ width: 90%;
+ max-width: 270px;
+ margin-inline: auto;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 15px;
+}
+
+select {
+  font-size: 12px;
+}
+
+.productsTitle{
+  padding: 15px 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.addListTools{
+ padding: 15px;
+ background: rgb(208, 230, 19);
+}
+
+.addListTools .listAddingTools {
+ box-shadow: .01px 1px 2px 1px rgba(0, 0, 0, 0.3);
+ margin-bottom: 10px;
+ width: 100%;
+ border-collapse: collapse;
+ border-spacing: 5px;
+}
+
+.addListTools .listAddingTools thead th{
+ text-align: left;
+ font-size: 12px;
+ padding-left: 5px;
+}
+
+.addListTools .listAddingTools tbody td{
+ border-top: 2px solid #333;
+ padding-left: 2px;
+ font-size: 12px;
+}
+
+.removeBtn{
+ padding: 4px;
+}
+
+.removeBtn button{
+ background: rgb(242, 13, 13);
+ display: flex;
+ justify-content: center;
+ width: 80%;
+ padding: 3px 10px;
+ border-radius: 3px;
+}
+
+.addToolInp{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 7px;
+}
+
+.addToolInp input {
+ padding: 4px 10px;
+ width: 70%;
+ text-align: left;
+}
+
+.addToolInp button {
+ width: 30%;
+ margin-top: 10px;
+ padding: 1px;
+ font-size: 20px;
+}
+
+.customerHistory .card .listHistory{
+  padding: 15px;
+}
+
+.returnList {
+ padding: 0 15px;
+ display: flex;
+ justify-content: space-between;
+ min-width: 270px;
+ width: 70%;
+}
+
+.retCard form {
+ border-top: 1px solid #000;
+ margin-top: 5px;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+
+.retCard form label {
+ margin-top: 15px;
+
+}
+
+.retCard form input{
+ width: 45px;
+}
+
+.retCard form button {
+ padding: 5px 10px;
+}
+
+.report {
+ background: rgb(255, 255, 255);
+ z-index: 2;
+ position: fixed;
+ inset: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.report-card  {
+ box-shadow: .01px 1px 2px 1px rgba(0, 0, 0, 0.3);
+ padding: 20px 10px;
+}
+
+.report li {
+ font-size: 12px;
+ font-weight: 500;
+ box-shadow: none;
+ border-block: 1px dashed #555;
+ margin-bottom: 7px;
+ list-style: none;
+}
+
+.report-price {
+ margin-top: 5px;
+ color: #444;
+ font-size: 9px;
+ display: flex;
+ gap: 10px;
+}
+
+.report-price span{
+ font-weight: 600;
+}
+
+.pay span {
+ color: #000;
+}
+
+.report-card .all-price {
+ padding-block: 5px;
+ font-size: 10px;
+ text-align: right;
+}
+
+.report-card .all-price span{
+ font-weight: 600;
+}
+
+.report-card .btns {
+ margin-top: 10px;
+ padding-inline: 10px;
+ display: flex;
+ justify-content: space-between;
+}
+
+.report-card .btns button {
+ width: 60px;
+ font-size: 10px;
+ border-radius: 5px;
+}
+
+.report-card .btns .dnpayBtn{
+ background: rgb(241, 26, 26);
+}
+
+
+.deleteBtn {
+ margin: 15px auto;
+ padding: 7px 10px;
+ background: rgb(241, 26, 26);
+}
+
+.deleteCustomer{
+  position: fixed;
+  background: #fff;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.deleteCustomer .card {
+  text-align: center;
+  padding: 20px;
+}
+
+.deleteCustomer .btns {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.deleteCustomer .btns :last-child {
+  background: red;
+}

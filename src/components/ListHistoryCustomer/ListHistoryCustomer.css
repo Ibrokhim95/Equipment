@@ -1,0 +1,148 @@
+.customersHistory .green,
+.customersHistory .paid,
+.customersHistory .dnpay {
+  padding: 3px 10px;
+  margin-bottom: 5px;
+}
+
+.paid,
+.dnpay {
+  background: #fff;
+}
+
+/* component */
+
+.listHistory li {
+  margin-bottom: 0;
+}
+
+.listHistory .date {
+  font-size: 13px;
+  text-align: center;
+}
+
+.listHistory .tools li {
+  display: flex;
+  flex-direction: column;
+}
+
+.green .tools li {
+  padding: 3px;
+  border: 1px dashed #222;
+}
+
+.green .tools li div {
+  border-bottom: 0;
+  padding: 0;
+}
+
+.listHistory div {
+  border-bottom: 1px dashed #222;
+  padding: 5px 0;
+}
+
+.customerHistory .paid,
+.customerHistory .dnpay {
+  text-align: right;
+  border: 1px double #222;
+  margin-top: 20px;
+}
+
+.customerHistory .list .date {
+  text-align: center;
+}
+
+.customerHistory .list li div {
+  border-top: 1px dashed #222;
+}
+
+.green {
+  background: rgb(122, 241, 134);
+}
+
+.green p {
+  color: #222;
+}
+
+.historyList {
+  margin-block: 10px;
+}
+
+.history {
+  margin-block: 10px;
+}
+
+.green span {
+  color: #555;
+}
+
+.customerHistory .paid .price,
+.customerHistory .dnpay .price {
+  font-size: 15px;
+  padding-block: 5px;
+}
+
+.customerHistory .paid .stamp div,
+.customerHistory .dnpay .stamp div {
+  margin-bottom: 20px;
+  margin-inline: auto;
+  padding: 10px;
+  width: max-content;
+  text-align: center;
+  transform: rotate(-11deg);
+}
+
+.paid .stamp .signet {
+  border: 4px dashed green;
+  color: green;
+  font-weight: 600;
+}
+
+.dnpay .stamp .signet {
+  border: 4px dashed red;
+  color: red;
+  font-weight: 600;
+}
+
+.paid,
+.dnpay {
+  text-align: right;
+  border: 1px double #222;
+  margin-top: 20px;
+}
+
+.green {
+  background: rgb(122, 241, 134);
+}
+
+.green p {
+  color: #222;
+}
+
+.historyList {
+  margin-block: 10px;
+}
+
+.history {
+  margin-block: 10px;
+}
+
+.green span {
+  color: #555;
+}
+
+.paid .price,
+.dnpay .price {
+  font-size: 15px;
+  padding-block: 5px;
+}
+
+.paid .stamp div,
+.dnpay .stamp div {
+  margin-bottom: 20px;
+  margin-inline: auto;
+  padding: 10px;
+  width: max-content;
+  text-align: center;
+  transform: rotate(-11deg);
+}
