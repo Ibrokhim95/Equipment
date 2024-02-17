@@ -32,7 +32,8 @@ function App() {
       setStorage(true)
     }
     setData(JSON.parse(localStorage.getItem("products")) || [])
-  }, [reducerValue, deleteCustomer])
+  }, [reducerValue, deleteCustomer, storage])
+  
   const toggle = (id, value, setValue) => {
     if(value === id) {
       return setValue(null)
