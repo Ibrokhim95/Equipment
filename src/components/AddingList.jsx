@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function ({ listProducts, setListProducts, customers, setListHistory, listHistory }) {
+export default function ({ listProducts, setListProducts, customers, setListHistory, products, allProduct, productValue }) {
   const { customerId } = useParams();
   const [date, setDate] = useState("");
   const [showError, setShowError] = useState("");
@@ -9,7 +9,7 @@ export default function ({ listProducts, setListProducts, customers, setListHist
   const [seller, setSeller] = useState('')
   const updCustomers = customers.filter((c) => c.id !== customerId);
   
-  const addProductToList = () => {
+  const addProductToList = ({}) => {
      const months = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr']
      const minute = new Date(date).getMinutes()
      const hour = new Date(date).getHours()
@@ -32,10 +32,20 @@ export default function ({ listProducts, setListProducts, customers, setListHist
           arr.push(product)
           customer.tools.push(arr)
         }
+        const updProducts = products.filter(item => item.title.toLowerCase() !== product.category.toLowerCase())
+        const thisProducts = products.find(item => item.title.toLowerCase() === product.category.toLowerCase())
+        const thisProduct = thisProducts.data.find(item => item.title === product.title)
+        const updProduct = thisProducts.data.filter(item => item.title !== product.title)
+        thisProduct.amount - product.amount
+        thisProduct.rent += Number(product.amount)
+        updProduct.push(thisProduct)
+        updProducts.push(thisProducts)
+        localStorage.setItem("products", JSON.stringify(updProducts))
       })
       const history = [getDate, [...listProducts], seller, 'green', desc, time]
       customer.history.push(history)
     }
+
     updCustomers.push(customer);
     localStorage.setItem("customers", JSON.stringify(updCustomers))
     setListHistory(customer.history)

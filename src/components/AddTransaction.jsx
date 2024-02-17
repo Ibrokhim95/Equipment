@@ -1,28 +1,30 @@
 import React, {useState} from 'react'
-import { useParams } from 'react-router-dom';
-import {products} from "../Data"
+import { useNavigate, useParams } from 'react-router-dom';
+// import {products} from "../Data"
 import Form from './Form';
 import {v4 as uuidv4} from 'uuid'
 import AddingList from './AddingList';
+import { useEffect } from 'react';
 
-export default function AddTransaction({toggle, customers, listHistory, setListHistory}) {
-  const {customerId} = useParams()
-  // const customer = customers.find(item => item.id === customerId)
-
-  const [data, setData] = useState(products[0].data);
+export default function AddTransaction({toggle, customers, listHistory, setListHistory, products}) {
   const [height, setHeight] = useState('all')
-
   const [productId, setProductId] = useState('')
   const [productValue, setProductValue] = useState(products[0])
   const [selected, setSelected] = useState(null)
-  const [otherTitle, setOtherTitle] = useState('');
   const [listProducts, setListProducts] = useState([])
+
+  products.sort((a, b) => {
+    if(a.title > b.title) return 1
+    if(a.title < b.title) return -1
+    return 0
+  })
 
   const productHandler = (product) =>{
     setProductId(product.id)
     setProductValue(product)
   }
-
+  
+  const data = products.find(product => product.title.toLowerCase() === 'opalobka').data
   let allProduct = data
   const filterData = () => {
     const filtered = products[0].data.filter(item => item.height === height)
@@ -33,11 +35,6 @@ export default function AddTransaction({toggle, customers, listHistory, setListH
     }
   } 
   filterData()
-
-  const product = {
-    id: uuidv4(),
-    title: otherTitle
-  }
 
   return (
     <div className="addTransaction">
@@ -53,7 +50,6 @@ export default function AddTransaction({toggle, customers, listHistory, setListH
       <div className="productsTitle">
       <h4>{productValue.title}</h4>
       <select className={productValue.title === 'Opalobka' ? '' : 'hidden' } onChange={(e) => setHeight(e.target.value)} >
-        <option value={'all'}>eni</option>
         <option value={'60'}>60cm</option>
         <option value={'50'}>50cm</option>
         <option value={'40'}>40cm</option>
@@ -65,24 +61,29 @@ export default function AddTransaction({toggle, customers, listHistory, setListH
           ?(allProduct.map(product => (
           <li key={product.id} >
             <div className="title"  onClick={() => toggle(product.id, selected, setSelected)} >
-                <div>{product.length}m x {product.height}cm</div>
+                  <p>{product.length}m x {product.height}cm</p>
+                  <p>{product.amount - product.rent}</p>
             </div>
             <Form toggle={toggle} selected={selected} setSelected={setSelected} product={product}  listPrdoucts={listProducts} setListProducts={setListProducts} />
           </li>
-        ))) 
-        : (productValue.data.map(product => (
+        )))  
+        : 
+        (productValue.data.map(product => (
           <li key={product.id} >
             <div className="title" onClick={() => toggle(product.id, selected, setSelected)}>
-              <div>{product.title}</div>
+                <p>{product.title}</p>
+                <p>{product.amount - product.rent}</p>
             </div>
             <Form toggle={toggle} selected={selected} setSelected={setSelected} product={product} listPrdoucts={listProducts} setListProducts={setListProducts}/>
           </li>
           
           )
-        ))}
+        ))
+        // null
+        }
       </ul>
       
-      <AddingList listHistory={listHistory} setListHistory={setListHistory} listProducts={listProducts} setListProducts={setListProducts} customers={customers} />
+      <AddingList products={products} allProduct={allProduct} productValue={productValue} listHistory={listHistory} setListHistory={setListHistory} listProducts={listProducts} setListProducts={setListProducts} customers={customers} />
     </div>
   );
 }

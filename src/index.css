@@ -19,6 +19,21 @@ body{
   margin: 30px auto;
 }
 
+.enter {
+  background: rgb(25, 177, 25);
+  z-index: 1000;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.enter button {
+  background: #fff;
+  color: #333;
+}
+
 .addCustomer{
   background: rgba(51, 51, 51, 0.905);
   position: fixed;

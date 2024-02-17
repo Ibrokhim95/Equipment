@@ -45,7 +45,7 @@ export default function Form({
   const error = null;
 
   const calculatePrice = () => {
-    if (price <= 0 || amount <= 0) {
+    if (price <= 0 || amount <= 0 || product.amount - product.rent - amount < 0) {
       return error;
     }
     if (product.title === "lesa") {
@@ -98,7 +98,7 @@ export default function Form({
   };
 
   const addingProduct = (listPrdoucts, setListProducts) => {
-    if (price <= 0 || amount <= 0) {
+    if (price <= 0 || amount <= 0 || product.amount - product.rent - amount < 0) {
       return error;
     }
     let productName = "";
@@ -117,7 +117,8 @@ export default function Form({
       amount: Number(amount),
       method,
       amountAddition: Number(amountAddition),
-      addition
+      addition,
+      category: product.category
     };
     if (listPrdoucts.length > 0) {
       const filtered = listPrdoucts.filter(

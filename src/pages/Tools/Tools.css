@@ -1,0 +1,71 @@
+.tools ul li {
+   list-style: none;
+}
+
+.tools .card {
+   padding: 10px;
+   margin-bottom: 10px;
+}
+
+.tools .head {
+   display: flex;
+   justify-content: space-between;
+}
+
+.tools .head .title {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+}
+
+.tools .btns {
+   display: flex;
+   gap: 10px;
+}
+
+.tools .btns span{
+   display: flex;
+   font-size: 10px;
+   color: #fff;
+   border-radius: 50%;
+   padding: 5px;
+}
+
+.tools .btns .addTool {
+   background: green;
+}
+
+.tools .btns .delTool {
+   background: red;
+}
+
+.tools .product li {
+   border-top: 1px solid #000;
+   border-bottom: 1px solid #000;
+   margin-bottom: 5px;
+   padding: 5px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.tools .product .amounts {
+   display: flex;
+   gap: 10px;
+} 
+
+.tools .product .amount {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.tools .product .amount .info {
+   font-size: 10px;
+}
+
+.tools .product .amount .light {
+   color: #999;
+   font-size: 15px;
+}
