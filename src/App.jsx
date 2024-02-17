@@ -65,7 +65,7 @@ function App() {
           </Route>
           <Route/>
           
-          <Route path="/tools" element={<Tools data={data} toggle={toggle} selected={selected} setSelected={setSelected}/>} />
+          <Route path="/tools" element={<Tools data={data} toggle={toggle} selected={selected} setSelected={setSelected} forceUpdate={forceUpdate} />} />
 
           <Route path="*" element={<NoMatch/>} />
         </Routes>
