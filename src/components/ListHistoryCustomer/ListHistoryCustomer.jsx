@@ -12,8 +12,8 @@ function ListHistoryCustomer({ customer }) {
               {h[1].map((tool) => (
                 <li key={tool.id}>
                   <div className="title">
-                    {tool.title === "opalobka" && <span>{tool.title}</span>}
-                    <span>{tool.productName} </span>
+                    {tool.category === "opalobka" && <span>{tool.category}</span>}
+                    <span>{tool.title} </span>
                     {tool.amount}
                     <span> ta</span>
                   </div>

@@ -24,7 +24,7 @@ export default function ({ listProducts, setListProducts, customers, setListHist
         product.time = time;
         product.date = date;
         
-        const bor = customer.tools.find(item => item[0].productName === product.productName)
+        const bor = customer.tools.find(item => item[0].title === product.title)
         if(bor !== undefined){
           bor.push(product)
         }else{
@@ -36,7 +36,6 @@ export default function ({ listProducts, setListProducts, customers, setListHist
         const thisProducts = products.find(item => item.title.toLowerCase() === product.category.toLowerCase())
         const thisProduct = thisProducts.data.find(item => item.title === product.title)
         const updProduct = thisProducts.data.filter(item => item.title !== product.title)
-        thisProduct.amount - product.amount
         thisProduct.rent += Number(product.amount)
         updProduct.push(thisProduct)
         updProducts.push(thisProducts)
@@ -82,7 +81,7 @@ export default function ({ listProducts, setListProducts, customers, setListHist
             <tr key={item.id} className="mb">
               <td>
                 {index + 1}. {item.title}{" "}
-                {item.title === "opalobka" ? item.productName : null}
+                {item.title === "opalobka" ? item.title : null}
               </td>
               <td>{item.amount}ta</td>
               <td>{item.perPiece}</td>

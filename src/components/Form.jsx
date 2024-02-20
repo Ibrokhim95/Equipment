@@ -21,7 +21,7 @@ export default function Form({
   useEffect(() => {
     let calc = 0;
 
-    if (product.title === "lesa") {
+    if (product.category === "lesa") {
       if (method === "komp") {
         calc = price / 24;
         setPerPiece(calc.toFixed());
@@ -29,7 +29,7 @@ export default function Form({
         calc = price;
         setPerPiece(calc);
       }
-    } else if (product.title === "opalobka") {
+    } else if (product.category === "opalobka") {
       if (method === "metr") {
         calc = product.length * price;
         setPerPiece(calc);
@@ -48,7 +48,7 @@ export default function Form({
     if (price <= 0 || amount <= 0 || product.amount - product.rent - amount < 0) {
       return error;
     }
-    if (product.title === "lesa") {
+    if (product.category.toLowerCase() === "lesa") {
       if (method === "dona") {
         setShowPrice(
           `${amount} donasi ${price} so'mdan ${
@@ -70,7 +70,7 @@ export default function Form({
           ).toFixed()} so'mdan bo'ladi`
         );
       }
-    } else if (product.title === "opalobka") {
+    } else if (product.category.toLowerCase() === "opalobka") {
       if (method === "metr") {
         setShowPrice(
           `metrga ${price} so'mdan 1 donasi ${
@@ -86,10 +86,6 @@ export default function Form({
           } metr, metriga ${price / product.length} so'mdan bo'ladi`
         );
       }
-    } else if (product.title === "meshalka") {
-      setShowPrice(
-        `${price} so'mdan ${amount} ${method} ${price * amount} so'm bo'ladi`
-      );
     } else {
       setShowPrice(
         `${price} so'mdan ${amount} tasi, Jami ${price * amount} so'm bo'ladi`
@@ -101,17 +97,9 @@ export default function Form({
     if (price <= 0 || amount <= 0 || product.amount - product.rent - amount < 0) {
       return error;
     }
-    let productName = "";
-
-    if (product.title === "opalobka") {
-      productName = product.length + "m." + product.height + "cm";
-    } else {
-      productName = product.title;
-    }
     const newProduct = {
       id: uuidv4(),
       title: product.title,
-      productName,
       price: Number(price),
       perPiece: Number(perPiece),
       amount: Number(amount),
@@ -122,7 +110,7 @@ export default function Form({
     };
     if (listPrdoucts.length > 0) {
       const filtered = listPrdoucts.filter(
-        (item) => item.productName !== newProduct.productName
+        (item) => item.title !== newProduct.title
       );
       filtered.push(newProduct);
       setListProducts(filtered);

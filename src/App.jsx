@@ -41,7 +41,6 @@ function App() {
     setValue(id)
   }
 
-
   return (
     <div className="app">
       <div className="container">
@@ -55,7 +54,7 @@ function App() {
             <Route index element={<CustomerHistory customers={customers} setDeleteCustomer={setDeleteCustomer} setCustomerId={setCustomerId}/>}/>
             <Route path="customer-history" element={<CustomerHistory  customers={customers} setDeleteCustomer={setDeleteCustomer} setCustomerId={setCustomerId}/>}/>
             <Route path="add-transaction" element={<AddTransaction products={data} toggle={toggle} customers={customers} listHistory={listHistory} setListHistory={setListHistory}/>}/>
-            <Route path="return-transaction" element={<ReturnTransaction forceUpdate={forceUpdate } toggle={toggle} customers={customers} deleteCustomer={deleteCustomer} setDeleteCustomer={setDeleteCustomer} setCustomerId={setCustomerId} histories={history} listHistory={listHistory} setListHistory={setListHistory}/>}/>
+            <Route path="return-transaction" element={<ReturnTransaction data={data} forceUpdate={forceUpdate } toggle={toggle} customers={customers} deleteCustomer={deleteCustomer} setDeleteCustomer={setDeleteCustomer} setCustomerId={setCustomerId} histories={history} listHistory={listHistory} setListHistory={setListHistory}/>}/>
           </Route>
 
           <Route path="/history" element={<History/>}>

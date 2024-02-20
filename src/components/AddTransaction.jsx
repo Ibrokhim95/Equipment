@@ -1,10 +1,7 @@
 import React, {useState} from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
 // import {products} from "../Data"
 import Form from './Form';
-import {v4 as uuidv4} from 'uuid'
 import AddingList from './AddingList';
-import { useEffect } from 'react';
 
 export default function AddTransaction({toggle, customers, listHistory, setListHistory, products}) {
   const [height, setHeight] = useState('all')
@@ -27,14 +24,30 @@ export default function AddTransaction({toggle, customers, listHistory, setListH
   const data = products.find(product => product.title.toLowerCase() === 'opalobka').data
   let allProduct = data
   const filterData = () => {
-    const filtered = products[0].data.filter(item => item.height === height)
+    const filtered = data.filter(item => item.height === height)
     if(height === 'all'){
       allProduct = data
     } else {
       allProduct = filtered
     }
   } 
-  filterData()
+  filterData() 
+  // allProduct.sort((a,b) => {
+  //   if(a.length > b.length) return 1
+  //   if(a.length < b.length) return -1
+  //   return 0
+  // })
+
+let select = []
+for (let i = 0; i < data.length; i++) {
+  if(data[i + 1] !== undefined) {
+    if(data[i].height !== data[i + 1].height) {
+      select.push(data[i].height)
+    }
+  }else{
+    select.push(data[i].height)
+  }
+}
 
   return (
     <div className="addTransaction">
@@ -49,15 +62,15 @@ export default function AddTransaction({toggle, customers, listHistory, setListH
 
       <div className="productsTitle">
       <h4>{productValue.title}</h4>
-      <select className={productValue.title === 'Opalobka' ? '' : 'hidden' } onChange={(e) => setHeight(e.target.value)} >
-        <option value={'60'}>60cm</option>
-        <option value={'50'}>50cm</option>
-        <option value={'40'}>40cm</option>
-        <option value={'25'}>25cm</option>
+      <select className={productValue.title === 'opalobka' ? '' : 'hidden' } onChange={(e) => setHeight(e.target.value)} >
+          <option value="all">Hammasi</option>
+        {select.map(item => (
+          <option key={item} value={item}>{item }cm</option>         
+        ))}
       </select>
       </div>
       <ul className="list">
-          {productValue.title === 'Opalobka' 
+          {productValue.title === 'opalobka' 
           ?(allProduct.map(product => (
           <li key={product.id} >
             <div className="title"  onClick={() => toggle(product.id, selected, setSelected)} >

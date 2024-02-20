@@ -7,7 +7,6 @@ import ListHistoryCustomer from '../../components/ListHistoryCustomer/ListHistor
 export default function HistoryCustomers({history, toggle, selected, setSelected}) {
   const {customers} = history
   const [sortV, setSortV] = useState('')
-  const [sortV2, setSortV2] = useState('')
   const [list, setList] = useState(customers)
   const inpRef = useRef('')
 

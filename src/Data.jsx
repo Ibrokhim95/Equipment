@@ -9,7 +9,7 @@ import barrel from '../src/assets/images/barrel.webp'
 import {v4 as uuidv4} from 'uuid'
 
 const products = [
-   {id: 1, title: 'Opalobka', value: 'formwork', img: formworkImg, data: [
+   {id: uuidv4(), title: 'opalobka', value: 'formwork', img: formworkImg, data: [
       {
          id: uuidv4(),
          title: '25x1',
@@ -291,13 +291,13 @@ const products = [
          category: 'opalobka',
       },
    ]},
-   {id: 2, title: 'Lesa', value: 'scaffolding', img: scaffoldingImg, data: [
+   {id: uuidv4(), title: 'lesa', value: 'scaffolding', img: scaffoldingImg, data: [
       {id: uuidv4(), title: 'lesa', select: ['dona', 'komp'], amount: 20, rent: 0, category: 'lesa',},
    ]},
-   {id: 3, title: 'Meshalka', value: 'mixer', img: mixerImg, data: [
+   {id: uuidv4(), title: 'meshalka', value: 'mixer', img: mixerImg, data: [
       {id: uuidv4(), title: 'meshalka', select: ['dona'], amount: 2, rent: 0, category: 'meshalka',},
    ]},
-   {id: 4, title: 'Boshqalar', value: 'others', img: toolsImg, data: [
+   {id: uuidv4(), title: 'boshqalar', value: 'others', img: toolsImg, data: [
       {id: uuidv4(), title: 'otboyniy', select: ['kun', 'soat'], amount: 2, rent: 0, category: 'boshqalar',},
       {id: uuidv4(), title: 'perforator', select: ['kun', 'soat'], amount: 2, rent: 0, category: 'boshqalar',},
       {id: uuidv4(), title: 'bolgarka', select: ['kun', 'soat'], amount: 2, rent: 0, category: 'boshqalar',},
@@ -305,19 +305,19 @@ const products = [
       {id: uuidv4(), title: 'drel', select: ['kun', 'soat'], amount: 3, rent: 0, category: 'boshqalar',},
       {id: uuidv4(), title: 'kompressor', select: ['kun', 'soat'], amount: 1, rent: 0, category: 'boshqalar',},
    ]},
-   {id: 5, title: 'Arava', value: "wheelbarrow", img: wheelbarrow, data: [
+   {id: uuidv4(), title: 'arava', value: "wheelbarrow", img: wheelbarrow, data: [
       {id: uuidv4(), title: 'arava katta', select: ['dona'], amount: 1, rent: 0, category: 'arava',},
       {id: uuidv4(), title: 'arava kichik', select: ['dona'], amount: 1, rent: 0, category: 'arava',},
    ]},
-   {id: 6, title: 'Projektor', value: 'spotlight', img: spotlight, data: [
+   {id: uuidv4(), title: 'projektor', value: 'spotlight', img: spotlight, data: [
       {id: uuidv4(), title: 'projektor', select: ['dona'], amount: 4, rent: 0, category: 'projektor',}
    ]},
-   {id: 7, title: 'Bayok', value: "bayok", img: bayok, data: [
+   {id: uuidv4(), title: 'bayok', value: "bayok", img: bayok, data: [
       {id: uuidv4(), title: 'bayok katta', select: ['dona'], amount: 1,  rent: 0, category: 'bayok',},
       {id: uuidv4(), title: 'bayok kichik', select: ['dona'], amount: 1,  rent: 0, category: 'bayok',},
       {id: uuidv4(), title: 'karita', select: ['dona'], amount: 1,  rent: 0, category: 'bayok',},
    ]},
-   {id: 8, title: 'Bochka', value: 'barrel', img: barrel, data: [
+   {id: uuidv4(), title: 'bochka', value: 'barrel', img: barrel, data: [
       {id: uuidv4(), title: 'bochka', select: ['dona'], amount: 3, rent: 0, category: 'bochka',},
    ]}
 ]

@@ -12,6 +12,7 @@ export default function ReturnTransaction({
   histories,
   listHistory,
   setListHistory,
+  data,
 }) {
   const { customerId } = useParams();
   const customer = customers.find((item) => item.id === customerId);
@@ -31,39 +32,36 @@ export default function ReturnTransaction({
   customer.tools.map((item) => {
     const total = item.reduce(
       (total, current) => {
-        const { amount, productName, addition, amountAddition } = current;
+        const { amount, title, amountAddition, category } = current;
 
         total.amount += Number(amount);
-        total.productName = productName;
+        total.title = title;
         total.amountAddition += Number(amountAddition);
+        total.category = category
 
         return total;
       },
-      { amount: 0, productName: "", amountAddition: 0 }
+      { amount: 0, title: "", amountAddition: 0 }
     );
     list.push(total);
   });
 
+
   const returnList = (product) => {
     const filtered = list.filter(
-      (tool) => tool.productName === product.productName
+      (tool) => tool.title === product.title
     );
-    if (
-      amount > 0 &&
-      list.filter((tool) => tool.productName === product.productName)[0]
-        .amount >= amount &&
-      list.filter((tool) => tool.productName === product.productName)[0]
-        .amountAddition >= addition
-    ) {
+    if (amount > 0 && list.filter((tool) => tool.title === product.title)[0].amount >= amount && list.filter((tool) => tool.title === product.title)[0].amountAddition >= addition) {
       const newProduct = {
         id: uuidv4(),
-        productName: product.productName,
+        title: product.title,
         amount: amount,
         addition: addition,
+        category: product.category
       };
       if (listProducts.length > 0) {
         const filtered = listProducts.filter(
-          (product) => product.productName !== newProduct.productName
+          (product) => product.title !== newProduct.title
         );
         filtered.push(newProduct);
         setListProducts(filtered);
@@ -108,14 +106,12 @@ export default function ReturnTransaction({
     if (date !== "" && seller !== "") {
       const time = new Date(date).getTime();
       const newTools = customer.tools;
-      report.push(getDate, time);
+      report.push(getDate, time); 
 
       listProducts.map((product) => {
         product.time = time;
-        product.date = date;
-        const filter = customer.tools.filter(
-          (item) => item[0].productName === product.productName
-        );
+        product.date = date; 
+        const filter = customer.tools.filter((item) => item[0].title === product.title);  
         filter[0].sort((a, b) => a.time - b.time);
         if (filter[0][0].method === "soat") {
           let ind = 0;
@@ -226,14 +222,21 @@ export default function ReturnTransaction({
         const filtered = [];
         filtered.push(filter[0].filter((item) => item.amount !== 0));
         newTools
-          .filter((item) => item[0].productName !== product.productName)
+          .filter((item) => item[0].title !== product.title)
           .push(filter[0]);
         const update = newTools
           .map((tool) => tool.filter((item) => item.amount !== 0))
           .filter((item) => item.length > 0);
         customer.tools = update;
         list.push(update);
-      });
+        const updProducts = data.filter(item => item.title !== product.category)
+        const thisProducts = data.find(item => item.title === product.category)
+        const updProduct = thisProducts.data.filter(item => item.title !== product.title)
+        const thisProduct = thisProducts.data.find(item => item.title === product.title)
+        thisProduct.rent = thisProduct.rent - product.amount
+        updProducts.push(thisProducts)
+        localStorage.setItem("products", JSON.stringify(updProducts))
+      }); 
     }
     updCustomers.push(customer);
     localStorage.setItem("customers", JSON.stringify(updCustomers));
@@ -315,7 +318,7 @@ export default function ReturnTransaction({
                   onClick={() => toggle(index, selected, setSelected)}
                 >
                   <p>
-                    {item.productName} {item.amount} ta,
+                    {item.title} {item.amount} ta,
                   </p>
                   <p>
                     qo'shimcha {item.amountAddition}
@@ -324,7 +327,7 @@ export default function ReturnTransaction({
                 </div>
                 <form className={selected === index ? "" : "hidden"} action="">
                   <label htmlFor="">
-                    {item.productName} <br />
+                    {item.title} <br />
                     <input
                       value={amount}
                       onChange={(e) => setAmount(e.target.value)}
@@ -370,7 +373,7 @@ export default function ReturnTransaction({
                   ? listProducts.map((item, index) => (
                       <tr key={index} className="mb">
                         <td>
-                          {index + 1}. {item.productName}{" "}
+                          {index + 1}. {item.title}{" "}
                         </td>
                         <td>{item.amount}ta</td>
                         <td>{item.addition}</td>
@@ -432,7 +435,7 @@ export default function ReturnTransaction({
               {reportList[0].map((item) => (
                 <li key={item.id}>
                   <span>
-                    {item.productName} {item.amount}ta
+                    {item.title} {item.amount}ta
                   </span>{" "}
                   <br />
                   <div className="report-price">
