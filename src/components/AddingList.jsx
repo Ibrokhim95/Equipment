@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-export default function ({ listProducts, setListProducts, customers, setListHistory, products, allProduct, productValue }) {
+export default function ({ listProducts, setListProducts, customers, setListHistory, products }) {
   const { customerId } = useParams();
   const [date, setDate] = useState("");
   const [showError, setShowError] = useState("");

@@ -13,32 +13,47 @@ import HistoryTrade from "./pages/History/HistoryTrade";
 import NoMatch from "./pages/NoMatch";
 import Tools from "./pages/Tools/Tools";
 import {products} from "./Data"
+import Spiner from "./components/Spiner/Spiner";
 
 function App() {
-  // localStorage.setItem('products', JSON.stringify(products))
-
   const customers = JSON.parse(localStorage.getItem("customers")) || [];
   const history = JSON.parse(localStorage.getItem("history")) || {customers: [], trade: []};
+
   const [selected, setSelected] = useState(null)
   const [deleteCustomer, setDeleteCustomer] = useState(false)
   const [customerId, setCustomerId] = useState(null)
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0)
   const [listHistory, setListHistory] = useState([])
-  const [data, setData] = useState([])
+  const [data, setData] = useState(null)
   const [storage, setStorage] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   
   useEffect(() => {
     if(localStorage.products === undefined){
       setStorage(true)
     }
-    setData(JSON.parse(localStorage.getItem("products")) || [])
-  }, [reducerValue, deleteCustomer, storage])
+    
+    const fetchingData = async () => {
+      try {
+        setData(JSON.parse(localStorage.getItem("products")) || [])
+        setIsLoading(false)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchingData() 
+   
+  }, [reducerValue, deleteCustomer, storage])  
   
   const toggle = (id, value, setValue) => {
     if(value === id) {
       return setValue(null)
     }
     setValue(id)
+  }
+
+  if(isLoading){
+    return <Spiner/>
   }
 
   return (
@@ -53,7 +68,7 @@ function App() {
           <Route path="/:customerId" element={<CustomerDetails customers={customers} setSelected={setSelected} histories={history} forceUpdate={forceUpdate} />}>
             <Route index element={<CustomerHistory customers={customers} setDeleteCustomer={setDeleteCustomer} setCustomerId={setCustomerId}/>}/>
             <Route path="customer-history" element={<CustomerHistory  customers={customers} setDeleteCustomer={setDeleteCustomer} setCustomerId={setCustomerId}/>}/>
-            <Route path="add-transaction" element={<AddTransaction products={data} toggle={toggle} customers={customers} listHistory={listHistory} setListHistory={setListHistory}/>}/>
+            <Route path="add-transaction" element={<AddTransaction forceUpdate={forceUpdate} data={data} toggle={toggle} customers={customers} listHistory={listHistory} setListHistory={setListHistory}/>}/>
             <Route path="return-transaction" element={<ReturnTransaction data={data} forceUpdate={forceUpdate } toggle={toggle} customers={customers} deleteCustomer={deleteCustomer} setDeleteCustomer={setDeleteCustomer} setCustomerId={setCustomerId} histories={history} listHistory={listHistory} setListHistory={setListHistory}/>}/>
           </Route>
 
