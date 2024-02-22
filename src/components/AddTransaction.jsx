@@ -69,6 +69,8 @@ for (let i = 0; i < products.length; i++) {
 
 {data && sel()}
 
+console.log(productValue);
+
   return (
     <div className="addTransaction">
       <div className="selectProduct"> 
@@ -83,9 +85,10 @@ for (let i = 0; i < products.length; i++) {
 
       <div className="productsTitle">
       <h4>{productValue.title}</h4>
-      <select className={productValue.title === 'opalobka' ? '' : 'hidden' } onChange={(e) => setHeight(e.target.value)} >
+      <select className={productValue.title.toLowerCase() === 'opalobka' ? '' : 'hidden' }
+        onChange={(e) => setHeight(e.target.value)} >
           <option value="all">Hammasi</option>
-        {select.map((item, index) => (
+            {select.map((item, index) => (
           <option key={index} value={item}>{`${item} cm`}</option>         
         ))}
       </select>
