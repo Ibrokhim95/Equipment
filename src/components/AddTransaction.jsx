@@ -85,7 +85,7 @@ console.log(productValue);
 
       <div className="productsTitle">
       <h4>{productValue.title}</h4>
-      <select className={productValue.title.toLowerCase() === 'opalobka' ? '' : 'hidden' }
+      <select className={productValue.title === 'opalobka' ? '' : 'hidden' }
         onChange={(e) => setHeight(e.target.value)} >
           <option value="all">Hammasi</option>
             {select.map((item, index) => (
